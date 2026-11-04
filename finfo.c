@@ -31,7 +31,8 @@ int main(int argc, char* argv[]){
         printf("File owner: %d\n", hi.st_uid);
 
         //print file size in bytes
-        printf("file size (bytes): %li\n", hi.st_size);
+        double kb = hi.st_size/1000.0;
+        printf("file size (bytes): %.02f kB\n", kb);
 
         //print last modified
         char time[100];

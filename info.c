@@ -49,13 +49,13 @@ int main(void){
 
     // print physical memory in bytes
     if(sysconf(_SC_PHYS_PAGES) != -1){
-        long physical_mem = sysconf(_SC_PHYS_PAGES) * getpagesize();
-        printf("total physical memory (bytes): %li\n", physical_mem);
+        double physical_mem_kb = sysconf(_SC_PHYS_PAGES) * getpagesize()/1000000000.0;
+        printf("total physical memory (bytes): %.02f GB\n", physical_mem_kb);
     }
 
     // print free memory in bytes
     struct sysinfo infodata;
     sysinfo(&infodata);
-    printf("free memory (bytes): %li\n", infodata.freeram*infodata.mem_unit);
+    printf("free memory (bytes): %.02f GB\n", infodata.freeram*infodata.mem_unit/1000000000.0);
     return 0;
 }
